@@ -1,4 +1,6 @@
-/* Reset */
+/* ==========================
+   Reset général
+========================== */
 * {
   margin: 0;
   padding: 0;
@@ -12,7 +14,9 @@ body {
   color: #333;
 }
 
-/* Header */
+/* ==========================
+   Header
+========================== */
 header {
   background: linear-gradient(90deg, #028174, #04af9e);
   color: white;
@@ -21,6 +25,7 @@ header {
   justify-content: space-between;
   align-items: center;
   box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  flex-wrap: wrap;
 }
 
 .brand {
@@ -30,11 +35,10 @@ header {
 }
 
 header .logo {
-  height: 50px;  /* ajuste la taille du logo */
+  height: 50px;
   width: auto;
   display: block;
 }
-
 
 .brand .site-name {
   font-size: 1.4rem;
@@ -42,11 +46,14 @@ header .logo {
   letter-spacing: 1px;
 }
 
-/* Navigation */
+/* ==========================
+   Navigation
+========================== */
 nav ul {
   list-style: none;
   display: flex;
   gap: 20px;
+  flex-wrap: wrap;
 }
 
 nav a {
@@ -64,11 +71,13 @@ nav a.active {
   color: #028174;
 }
 
-/* Section Hero */
+/* ==========================
+   Hero
+========================== */
 .hero {
   text-align: center;
   padding: 80px 20px;
-  background: linear-gradient(135deg, #064663, #028174); /* joli dégradé islamique */
+  background: linear-gradient(135deg, #064663, #028174);
   color: white;
   text-shadow: 2px 2px 6px rgba(0,0,0,0.5);
 }
@@ -100,7 +109,9 @@ nav a.active {
   color: white;
 }
 
-/* Sections */
+/* ==========================
+   Sections
+========================== */
 section h2 {
   text-align: center;
   margin-bottom: 40px;
@@ -108,7 +119,9 @@ section h2 {
   color: #028174;
 }
 
-/* Cards */
+/* ==========================
+   Cards
+========================== */
 .cards {
   display: flex;
   justify-content: center;
@@ -131,7 +144,9 @@ section h2 {
   box-shadow: 0 8px 20px rgba(0,0,0,0.15);
 }
 
-/* Quiz button */
+/* ==========================
+   Buttons
+========================== */
 .btn {
   display: inline-block;
   background: #028174;
@@ -147,7 +162,9 @@ section h2 {
   background: #04af9e;
 }
 
-/* Contact form */
+/* ==========================
+   Contact form
+========================== */
 .contact form {
   max-width: 500px;
   margin: 0 auto;
@@ -177,11 +194,102 @@ section h2 {
   background: #04af9e;
 }
 
-/* Footer */
+/* ==========================
+   Footer
+========================== */
 footer {
   background: #028174;
   color: white;
   text-align: center;
-  padding: 15px;
+  padding: 30px 15px;
   margin-top: 60px;
+}
+
+footer div {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+footer div img {
+  width: 38px;
+  vertical-align: middle;
+  border-radius: 50%;
+  background: white;
+  padding: 6px;
+  transition: transform 0.3s;
+}
+
+footer div img:hover {
+  transform: scale(1.2);
+}
+
+/* ==========================
+   Responsive
+========================== */
+@media (max-width: 1024px) {
+  nav ul {
+    justify-content: center !important;
+  }
+}
+
+@media (max-width: 768px) {
+  header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  nav ul {
+    flex-direction: column;
+    width: 100%;
+    margin-top: 10px;
+    gap: 10px;
+  }
+  nav ul li a {
+    display: block;
+    width: 100%;
+    text-align: center;
+    padding: 8px;
+  }
+  .hero {
+    padding: 40px 15px;
+  }
+  .hero h2 {
+    font-size: 2rem;
+  }
+  .hero .hadith {
+    font-size: 1rem;
+  }
+  .hero .btn {
+    padding: 10px 20px;
+  }
+  .cards {
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
+  .card {
+    max-width: 90%;
+    margin-bottom: 20px;
+  }
+  footer div img {
+    width: 30px;
+    padding: 4px;
+  }
+  footer h3 {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero h2 {
+    font-size: 1.6rem;
+  }
+  .hero .hadith {
+    font-size: 0.9rem;
+  }
+  .hero .btn {
+    padding: 8px 15px;
+    font-size: 0.9rem;
+  }
 }

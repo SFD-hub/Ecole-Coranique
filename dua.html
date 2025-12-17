@@ -3,139 +3,140 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Contact - École Islamique</title>
+  <title>Dua - École Islamique</title>
   <link rel="stylesheet" href="style.css">
   <style>
     body {
-      background:#f5f7fa;
-      font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      color:#333;
-      margin:0;
+      background: #f5f7fa;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      color: #333;
+      margin: 0;
     }
 
     header {
-      background:linear-gradient(90deg,#028174,#04af9e);
-      color:white;
-      padding:15px 30px;
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      flex-wrap:wrap;
-      box-shadow:0 4px 10px rgba(0,0,0,0.1);
+      background: linear-gradient(90deg, #028174, #04af9e);
+      color: white;
+      padding: 15px 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
     }
 
     .brand h1 {
-      font-size:1.6rem;
-      font-weight:bold;
+      font-size: 1.6rem;
+      font-weight: bold;
     }
 
     nav ul {
-      list-style:none;
-      display:flex;
-      gap:15px;
-      margin:0;
-      padding:0;
-      flex-wrap:wrap;
+      list-style: none;
+      display: flex;
+      gap: 15px;
+      margin: 0;
+      padding: 0;
+      flex-wrap: wrap;
     }
 
     nav a {
-      color:white;
-      text-decoration:none;
-      font-weight:500;
-      padding:6px 12px;
-      border-radius:6px;
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+      padding: 6px 12px;
+      border-radius: 6px;
       transition: background 0.3s, color 0.3s;
     }
 
     nav a.active,
     nav a:hover {
-      background:white;
-      color:#028174;
+      background: white;
+      color: #028174;
     }
 
     main {
-      padding:50px 20px;
-      max-width:900px;
-      margin:auto;
+      padding: 50px 20px;
+      max-width: 900px;
+      margin: auto;
     }
 
     main h2 {
-      color:#028174;
-      margin-bottom:40px;
-      font-size:2rem;
-      text-align:center;
+      color: #028174;
+      margin-bottom: 40px;
+      font-size: 2rem;
+      text-align: center;
     }
 
-    form {
-      display:flex;
-      flex-direction:column;
-      gap:20px;
-      background:white;
-      padding:30px;
-      border-radius:15px;
-      box-shadow:0 4px 12px rgba(0,0,0,0.1);
+    .dua-container {
+      background: white;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
     }
 
-    input, textarea {
-      padding:12px;
-      border-radius:8px;
-      border:1px solid #ccc;
-      font-size:1rem;
-      width:100%;
-      box-sizing:border-box;
+    .dua-item {
+      margin-bottom: 30px;
+      padding-bottom: 30px;
+      border-bottom: 1px solid #eee;
     }
 
-    button {
-      background:#028174;
-      color:white;
-      padding:12px;
-      border:none;
-      border-radius:8px;
-      font-weight:bold;
-      cursor:pointer;
-      transition:background 0.3s;
+    .dua-item:last-child {
+      border-bottom: none;
     }
 
-    button:hover {
-      background:#04af9e;
+    .dua-arabic {
+      font-size: 1.5rem;
+      text-align: right;
+      margin-bottom: 15px;
+      color: #028174;
+      line-height: 1.6;
+    }
+
+    .dua-transcription {
+      font-style: italic;
+      margin-bottom: 10px;
+      color: #555;
+    }
+
+    .dua-meaning {
+      color: #333;
+      line-height: 1.6;
     }
 
     footer {
-      background:#028174;
-      color:white;
-      text-align:center;
-      padding:30px 15px;
-      margin-top:60px;
+      background: #028174;
+      color: white;
+      text-align: center;
+      padding: 30px 15px;
+      margin-top: 60px;
     }
 
     footer img {
-      width:38px;
-      vertical-align:middle;
-      border-radius:50%;
-      background:white;
-      padding:6px;
+      width: 38px;
+      vertical-align: middle;
+      border-radius: 50%;
+      background: white;
+      padding: 6px;
       transition: transform 0.3s;
     }
 
-    /* Responsive */
-    @media screen and (max-width:768px) {
+    @media screen and (max-width: 768px) {
       header {
-        flex-direction:column;
-        align-items:flex-start;
+        flex-direction: column;
+        align-items: flex-start;
       }
 
       nav ul {
-        flex-direction:column;
-        gap:10px;
-        width:100%;
+        flex-direction: column;
+        gap: 10px;
+        width: 100%;
       }
 
       main {
-        padding:30px 15px;
+        padding: 30px 15px;
       }
 
-      form {
-        padding:20px;
+      .dua-container {
+        padding: 20px;
       }
     }
   </style>
@@ -153,24 +154,42 @@
       <li><a href="index.html">Accueil</a></li>
       <li><a href="alquran_wolof.html">Al Qur'an en Wolof</a></li>
       <li><a href="hadith.html">Hadith</a></li>
-      <li><a href="dua.html">Dua</a></li>
+      <li><a href="dua.html" class="active">Dua</a></li>
       <li><a href="apropos.html">À propos</a></li>
-      <li><a href="contact.html" class="active">Contact</a></li>
+      <li><a href="contact.html">Contact</a></li>
     </ul>
   </nav>
 </header>
 
 <!-- ===== CONTENU PRINCIPAL ===== -->
 <main>
-  <h2>📬 Contactez-nous</h2>
+  <h2>📖 Invocations (Dua) en Islam</h2>
 
-  <form action="#" method="post">
-    <input type="text" name="nom" placeholder="Votre nom" required>
-    <input type="email" name="email" placeholder="Votre email" required>
-    <input type="text" name="sujet" placeholder="Sujet" required>
-    <textarea name="message" rows="6" placeholder="Votre message" required></textarea>
-    <button type="submit">Envoyer</button>
-  </form>
+  <div class="dua-container">
+    <div class="dua-item">
+      <div class="dua-arabic">رَبَّنَا آتِنَا فِي الدُّنْيَا حَسَنَةً وَفِي الْآخِرَةِ حَسَنَةً وَقِنَا عَذَابَ النَّارِ</div>
+      <div class="dua-transcription">Rabbana atina fid-dunya hasanatan wa fil-akhirati hasanatan wa qina 'adhaban-nar</div>
+      <div class="dua-meaning">"Seigneur, donne-nous une belle part ici-bas, et une belle part dans l'au-delà, et protège-nous du châtiment du Feu." (Coran 2:201)</div>
+    </div>
+
+    <div class="dua-item">
+      <div class="dua-arabic">اللَّهُمَّ اغْفِرْ لِي، وَارْحَمْنِي، وَاهْدِنِي، وَعَافِنِي، وَارْزُقْنِي</div>
+      <div class="dua-transcription">Allahummaghfir li, warhamni, wahdini, wa 'afini, warzuqni</div>
+      <div class="dua-meaning">"Ô Allah, pardonne-moi, fais-moi miséricorde, guide-moi, préserve-moi et accorde-moi ma subsistance."</div>
+    </div>
+
+    <div class="dua-item">
+      <div class="dua-arabic">سُبْحَانَ اللَّهِ وَبِحَمْدِهِ، سُبْحَانَ اللَّهِ الْعَظِيمِ</div>
+      <div class="dua-transcription">Subhanallahi wa bihamdihi, Subhanallahil-'Adhim</div>
+      <div class="dua-meaning">"Gloire à Allah et Louange à Lui, Gloire à Allah le Très Grand."</div>
+    </div>
+
+    <div class="dua-item">
+      <div class="dua-arabic">لَا إِلَهَ إِلَّا أَنْتَ سُبْحَانَكَ إِنِّي كُنْتُ مِنَ الظَّالِمِينَ</div>
+      <div class="dua-transcription">La ilaha illa anta subhanaka inni kuntu minaz-zalimin</div>
+      <div class="dua-meaning">"Il n'y a de divinité que Toi, Gloire à Toi, j'ai été du nombre des injustes." (Coran 21:87)</div>
+    </div>
+  </div>
 </main>
 
 <!-- ===== FOOTER ===== -->
@@ -188,7 +207,6 @@
 </footer>
 
 <script>
-  // Animation au survol des icônes
   document.querySelectorAll('footer img').forEach(icon => {
     icon.addEventListener('mouseover', () => icon.style.transform = 'scale(1.2)');
     icon.addEventListener('mouseout', () => icon.style.transform = 'scale(1)');

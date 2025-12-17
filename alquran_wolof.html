@@ -5,132 +5,79 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Al Qur'an en Wolof - École Islamique</title>
   <link rel="stylesheet" href="style.css">
+
   <style>
-    body {
-      background:#f5f7fa;
-      font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      color:#333;
-      margin:0;
-    }
-
-    header {
-      background:linear-gradient(90deg,#028174,#04af9e);
-      color:white;
-      padding:15px 30px;
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      flex-wrap:wrap;
-      box-shadow:0 4px 10px rgba(0,0,0,0.1);
-    }
-
-    .brand h1 {
-      font-size:1.6rem;
-      font-weight:bold;
-    }
-
-    nav ul {
-      list-style:none;
-      display:flex;
-      gap:15px;
-      margin:0;
-      padding:0;
-      flex-wrap:wrap;
-    }
-
-    nav a {
-      color:white;
-      text-decoration:none;
-      font-weight:500;
-      padding:6px 12px;
-      border-radius:6px;
-      transition: background 0.3s, color 0.3s;
-    }
-
-    nav a.active,
-    nav a:hover {
-      background:white;
-      color:#028174;
-    }
-
+    /* ===== Section Audios ===== */
     section {
-      padding:50px 20px;
-      max-width:900px;
-      margin:auto;
-      text-align:center;
+      padding: 50px 20px;
+      max-width: 1000px;
+      margin: auto;
+      text-align: center;
     }
 
     section h2 {
-      color:#028174;
-      margin-bottom:30px;
-      font-size:2rem;
+      color: #028174;
+      margin-bottom: 30px;
+      font-size: 2rem;
     }
 
     .audio-grid {
-      display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-      gap:25px;
-      margin-top:30px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 25px;
     }
 
     .audio-item {
-      background:white;
-      padding:20px;
-      border-radius:12px;
-      box-shadow:0 4px 10px rgba(0,0,0,0.1);
-      text-align:left;
+      position: relative;
+      height: 320px;
+      border-radius: 14px;
+      overflow: hidden;
+      background-size: cover;
+      background-position: center;
+      box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+      display: flex;
+      align-items: flex-end;
     }
 
-    .audio-item h3 {
-      color:#028174;
-      margin-bottom:10px;
+    .audio-item::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to top,
+        rgba(0,0,0,0.75),
+        rgba(0,0,0,0.25)
+      );
     }
 
-    .audio-item p {
-      font-style:italic;
-      margin-bottom:10px;
+    .audio-content {
+      position: relative;
+      padding: 15px;
+      color: white;
+      width: 100%;
+      text-align: center;
     }
 
-    audio {
-      width:100%;
+    .audio-content h3 {
+      font-size: 1.1rem;
+      margin-bottom: 5px;
+      color: white;
     }
 
-    footer {
-      background:#028174;
-      color:white;
-      text-align:center;
-      padding:30px 15px;
-      margin-top:60px;
+    .audio-content p {
+      font-style: italic;
+      font-size: 0.9rem;
+      margin-bottom: 10px;
+      opacity: 0.9;
     }
 
-    footer img {
-      width:38px;
-      vertical-align:middle;
-      border-radius:50%;
-      background:white;
-      padding:6px;
-      transition: transform 0.3s;
+    .audio-content audio {
+      width: 100%;
     }
 
-    /* Responsive */
-    @media screen and (max-width:768px) {
-      header {
-        flex-direction:column;
-        align-items:flex-start;
-      }
-
-      nav ul {
-        flex-direction:column;
-        gap:10px;
-        width:100%;
-      }
-
-      section {
-        padding:30px 15px;
-      }
-
+    @media (max-width: 768px) {
       .audio-item {
-        padding:15px;
+        height: 280px;
       }
     }
   </style>
@@ -138,7 +85,8 @@
 
 <body>
 
-<!-- Header -->
+<!-- ===== Header ===== -->
+<!-- Header Universel -->
 <header>
   <div class="brand">
     <h1>École Islamique</h1>
@@ -146,7 +94,7 @@
   <nav>
     <ul>
       <li><a href="index.html">Accueil</a></li>
-      <li><a href="alquran_wolof.html" class="active">Al Qur'an en Wolof</a></li>
+      <li><a href="alquran_wolof.html"class="active">Al Qur'an en Wolof</a></li>
       <li><a href="hadith.html">Hadith</a></li>
       <li><a href="dua.html">Dua</a></li>
       <li><a href="apropos.html">À propos</a></li>
@@ -155,85 +103,112 @@
   </nav>
 </header>
 
-<!-- Section Audios -->
+
+<!-- ===== Section Audios ===== -->
 <section>
-  <h2>Écoutez les récitations du Qur'an en Wolof</h2>
+  <h2>Écoutez les récitations du Coran en Wolof</h2>
 
   <div class="audio-grid">
 
-    <div class="audio-item">
-      <h3>Sourate 72 - Al-Jinn (Les Djinns)</h3>
-      <p>Wolof : Surat Al Jini</p>
+    <div class="audio-item" style="background-image:url('al\ jinn.jpg');">
+    <div class="audio-content">
+      <h3>سورة الجن</h3>
+      <p>Sourate 72 – Al-Jinn</p>
       <audio controls>
         <source src="Sourate 72 al Jinn Arabe-Wolof.m4a" type="audio/mp3">
-        Votre navigateur ne supporte pas l'audio.
       </audio>
     </div>
+  </div>
 
-    <div class="audio-item">
-      <h3>Sourate 69 - al-Haqqah (L’Ouverture)</h3>
-      <p>Wolof : Sourate al Haqqah</p>
+    <div class="audio-item" style="background-image:url('Nuh.jpg');">
+    <div class="audio-content">
+      <h3>سورة نوح</h3>
+      <p>Sourate 71 – Nuh</p>
+      <audio controls>
+        <source src="Sourate 71 Nuh Arabe-Wolof.m4a" type="audio/mp3">
+      </audio>
+    </div>
+  </div>
+
+    <div class="audio-item" style="background-image:url('al\ ma\'arij.jpg');">
+    <div class="audio-content">
+      <h3>سورة المعارج</h3>
+      <p>Sourate 70 – Al-Ma'arij</p>
+      <audio controls>
+        <source src="Sourate 70 al Ma'arij Arabe-Wolof.m4a" type="audio/mp3">
+      </audio>
+    </div>
+  </div>
+
+    <div class="audio-item" style="background-image:url('al\ haqqah.jpg');">
+    <div class="audio-content">
+      <h3>سورة الحاقة</h3>
+      <p>Sourate 69 – Al-Haqqah</p>
       <audio controls>
         <source src="Sourate 69 al Haqqah Arabe-Wolof.m4a" type="audio/mp3">
       </audio>
     </div>
-
-    <div class="audio-item">
-      <h3>Sourate 79 - an-Nazi'aat (Les anges qui arrachent les âmes)</h3>
-      <p>Wolof : Sourate an Nazi'aat</p>
-      <audio controls>
-        <source src="Sourate 79 an Nazi'aat Arabe-Wolof.m4a" type="audio/mp3">
-      </audio>
-    </div>
-
-    <div class="audio-item">
-      <h3>Sourate 81 - At-Takwir (L’obscurcissement)</h3>
-      <p>Wolof : Sourate At Takwir</p>
-      <audio controls>
-        <source src="Sourate 81 At Takwir Arabe-Wolof.m4a" type="audio/mp3">
-      </audio>
-    </div>
-
-    <div class="audio-item">
-      <h3>Sourate 75 - al-Qiyaamah (La résurrection)</h3>
-      <p>Wolof : Sourate Al Qiyaamah</p>
-      <audio controls>
-        <source src="Sourate 75 al Qiyaamah Arabe-Wolof.m4a" type="audio/mp3">
-      </audio>
-    </div>
-
-    <div class="audio-item">
-      <h3>Sourate 85 - Al-Buruj (Les constellations)</h3>
-      <p>Wolof : Surat Al Buruj</p>
-      <audio controls>
-        <source src="Sourate 85 al Buruj Arabe-Wolof.m4a" type="audio/mp3">
-      </audio>
-    </div>
-
   </div>
+   
+  <div class="audio-item" style="background-image:url('al\ qalam.jpg');">
+    <div class="audio-content">
+      <h3>سورة القلم</h3>
+      <p>Sourate 68 – Al-Qalam</p>
+      <audio controls>
+        <source src="Sourate 68 al Qalam Arabe-Wolof.m4a" type="audio/mp3">
+      </audio>
+    </div>
+  </div>
+
+  <div class="audio-item" style="background-image:url('Al\ mulk.jpg');">
+    <div class="audio-content">
+      <h3>سورة الملك</h3>
+      <p>Sourate 67 – Al-Mulk</p>
+      <audio controls>
+        <source src="Sourate 67 al Mulk Arabe-Wolof.m4a" type="audio/mp3">
+      </audio>
+    </div>
+  </div>
+
+</div>
+
 </section>
 
-<!-- Footer -->
+<!-- ===== Footer ===== -->
 <footer>
   <h3>🌿 Rejoignez-nous sur nos réseaux pour plus de contenu islamique !</h3>
   <div>
-    <a href="https://wa.me/221771234567" target="_blank">
+    <a href="https://wa.me/221784322880" target="_blank">
       <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" alt="WhatsApp">
     </a>
-    <a href="https://www.tiktok.com/@ton_nom_utilisateur" target="_blank">
+    <a href="https://www.tiktok.com/@falloutech" target="_blank">
       <img src="https://cdn-icons-png.flaticon.com/512/3046/3046120.png" alt="TikTok">
     </a>
   </div>
   <p>&copy; 2025 École Islamique. Tous droits réservés.</p>
 </footer>
 
-<script>
-  // Animation au survol (agrandissement)
-  document.querySelectorAll('footer img').forEach(icon => {
-    icon.addEventListener('mouseover', () => icon.style.transform = 'scale(1.2)');
-    icon.addEventListener('mouseout', () => icon.style.transform = 'scale(1)');
-  });
-</script>
-
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

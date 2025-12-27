@@ -3,29 +3,30 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Hadith - École Islamique</title>
+  <title>Hadiths - École Islamique</title>
   <link rel="stylesheet" href="style.css">
   <style>
-    /* Body */
     body {
       background: #f5f7fa;
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      margin: 0;
       color: #333;
+      margin: 0;
       line-height: 1.6;
     }
 
-    /* Header */
+    /* Header identique à dua.html */
     header {
-      background: linear-gradient(90deg,#028174,#04af9e);
+      background: linear-gradient(90deg, #028174, #04af9e);
       color: white;
-      padding: 15px 20px;
-      text-align: center;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      padding: 15px 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
     }
 
-    header .site-name {
-      margin: 0;
+    .brand h1 {
       font-size: 1.6rem;
       font-weight: bold;
     }
@@ -33,11 +34,10 @@
     nav ul {
       list-style: none;
       display: flex;
-      justify-content: center;
       gap: 15px;
-      flex-wrap: wrap;
-      margin: 10px 0 0 0;
+      margin: 0;
       padding: 0;
+      flex-wrap: wrap;
     }
 
     nav a {
@@ -55,43 +55,107 @@
       color: #028174;
     }
 
-    /* Main */
-    main.hadith-page {
+    /* Contenu principal */
+    main {
+      padding: 50px 20px;
       max-width: 900px;
-      margin: 40px auto;
-      padding: 20px;
-      background: white;
-      border-radius: 10px;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+      margin: auto;
     }
 
-    main h1 {
-      text-align: center;
+    main h2 {
       color: #028174;
-      margin-bottom: 30px;
+      margin-bottom: 40px;
+      font-size: 2rem;
+      text-align: center;
     }
 
-    .hadith {
-      margin-bottom: 25px;
-      border-left: 4px solid #028174;
-      padding-left: 15px;
-      background: #f9fdfc;
-      border-radius: 6px;
+    /* Grid des hadiths */
+    .hadith-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
     }
 
-    .hadith p {
-      margin: 5px 0;
+    /* Carte de hadith */
+    .hadith-card {
+      background: white;
+      border-radius: 12px;
+      padding: 25px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+      transition: transform 0.3s, box-shadow 0.3s;
+      border-top: 4px solid #028174;
+      position: relative;
+      overflow: hidden;
     }
 
-    .arabe {
-      font-size: 1.3em;
-      direction: rtl;
+    .hadith-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+    }
+
+    .hadith-card::before {
+      content: "ﷺ";
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      font-size: 2.5rem;
+      color: rgba(2, 129, 116, 0.08);
+      font-family: 'Segoe UI', Tahoma, sans-serif;
+    }
+
+    .hadith-arabic {
+      font-size: 1.5rem;
       text-align: right;
-      color: #0d574f;
+      margin: 20px 0;
+      color: #028174;
+      line-height: 1.8;
+      font-family: 'Traditional Arabic', 'Scheherazade', 'Lateef', serif;
       font-weight: 600;
+      direction: rtl;
     }
 
-    /* Footer */
+    .hadith-translation {
+      font-size: 1.1rem;
+      margin: 25px 0;
+      color: #333;
+      line-height: 1.7;
+      padding-bottom: 20px;
+      border-bottom: 1px dashed #eee;
+    }
+
+    .hadith-source {
+      color: #666;
+      font-size: 0.95rem;
+      font-style: italic;
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    /* Section de bienvenue */
+    .welcome-section {
+      background: white;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      margin-bottom: 40px;
+      text-align: center;
+      border-left: 4px solid #04af9e;
+    }
+
+    .welcome-section h2 {
+      color: #028174;
+      margin-bottom: 15px;
+      font-size: 1.8rem;
+    }
+
+    .welcome-section p {
+      color: #555;
+      max-width: 700px;
+      margin: 0 auto;
+      line-height: 1.7;
+    }
+
+    /* Footer identique à dua.html */
     footer {
       background: #028174;
       color: white;
@@ -101,7 +165,7 @@
     }
 
     footer h3 {
-      margin-bottom: 15px;
+      margin-bottom: 20px;
       font-size: 1.2rem;
       font-weight: 500;
     }
@@ -119,49 +183,65 @@
       transition: transform 0.3s;
     }
 
+    footer img:hover {
+      transform: scale(1.2);
+    }
+
     footer p {
-      margin: 0;
+      margin: 15px 0 0 0;
       font-size: 0.9rem;
       opacity: 0.9;
     }
 
     /* Responsive */
-    @media (max-width: 768px) {
+    @media screen and (max-width: 768px) {
       header {
-        text-align: center;
-        padding: 10px 15px;
+        flex-direction: column;
+        align-items: flex-start;
       }
 
       nav ul {
         flex-direction: column;
         gap: 10px;
+        width: 100%;
       }
 
-      main.hadith-page {
-        margin: 20px 10px;
-        padding: 15px;
+      main {
+        padding: 30px 15px;
       }
 
-      .arabe {
-        font-size: 1.1em;
+      .hadith-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+
+      .hadith-card {
+        padding: 20px;
+      }
+
+      .hadith-arabic {
+        font-size: 1.3rem;
+      }
+
+      .welcome-section {
+        padding: 20px;
       }
     }
 
-    @media (max-width: 480px) {
-      header .site-name {
-        font-size: 1.4rem;
+    @media screen and (max-width: 480px) {
+      nav ul {
+        flex-direction: column;
+        gap: 8px;
       }
 
-      .hadith {
-        padding-left: 10px;
+      nav a {
+        padding: 8px 12px;
+        display: block;
+        text-align: center;
       }
 
-      main h1 {
-        font-size: 1.6rem;
-      }
-
-      footer h3 {
-        font-size: 1rem;
+      .hadith-arabic {
+        font-size: 1.2rem;
       }
     }
   </style>
@@ -169,8 +249,7 @@
 
 <body>
 
-  <!-- Header -->
- <!-- Header Universel -->
+<!-- ===== HEADER (identique à dua.html) ===== -->
 <header>
   <div class="brand">
     <h1>École Islamique</h1>
@@ -179,65 +258,81 @@
     <ul>
       <li><a href="index.html">Accueil</a></li>
       <li><a href="alquran_wolof.html">Al Qur'an en Wolof</a></li>
-      <li><a href="hadith.html"class="active">Hadith</a></li>
-      <li><a href="dua.html" >Dua</a></li>
+      <li><a href="hadith.html" class="active">Hadith</a></li>
+      <li><a href="dua.html">Dua</a></li>
       <li><a href="apropos.html">À propos</a></li>
       <li><a href="contact.html">Contact</a></li>
     </ul>
   </nav>
 </header>
 
+<!-- ===== CONTENU PRINCIPAL ===== -->
+<main>
+  <!-- Section de bienvenue -->
+  <div class="welcome-section">
+    <h2>Les Hadiths du Prophète ﷺ</h2>
+    <p>Découvrez les paroles et enseignements de notre bien-aimé Prophète Mohammed ﷺ, tirés des recueils authentiques de Boukhari, Muslim et autres sources fiables.</p>
+  </div>
 
-  <!-- Main content -->
-  <main class="hadith-page">
-    <h1>Les Hadiths du Prophète ﷺ</h1>
-
-    <div class="hadith">
-      <p class="arabe">إِنَّمَا الأَعْمَالُ بِالنِّيَّاتِ</p>
-      <p><strong>Traduction :</strong> Les actions ne valent que par les intentions.</p>
-      <p><em>(Rapporté par Al-Bukhari et Muslim)</em></p>
+  <!-- Grille des hadiths -->
+  <div class="hadith-grid">
+    <!-- Hadith 1 -->
+    <div class="hadith-card">
+      <div class="hadith-arabic">إِنَّمَا الْأَعْمَالُ بِالنِّيَّاتِ، وَإِنَّمَا لِكُلِّ امْرِئٍ مَا نَوَى</div>
+      <div class="hadith-translation">Les actions ne valent que par leurs intentions, et à chacun selon son intention.</div>
+      <div class="hadith-source">Rapporté par Al-Bukhari & Muslim</div>
     </div>
 
-    <div class="hadith">
-      <p class="arabe">مَنْ كَانَ يُؤْمِنُ بِاللَّهِ وَالْيَوْمِ الْآخِرِ فَلْيَقُلْ خَيْرًا أَوْ لِيَصْمُتْ</p>
-      <p><strong>Traduction :</strong> Que celui qui croit en Allah et au Jour dernier dise du bien ou se taise.</p>
-      <p><em>(Rapporté par Al-Bukhari et Muslim)</em></p>
+    <!-- Hadith 2 -->
+    <div class="hadith-card">
+      <div class="hadith-arabic">مَنْ كَانَ يُؤْمِنُ بِاللَّهِ وَالْيَوْمِ الْآخِرِ فَلْيَقُلْ خَيْرًا أَوْ لِيَصْمُتْ</div>
+      <div class="hadith-translation">Que celui qui croit en Allah et au Jour Dernier dise du bien ou se taise.</div>
+      <div class="hadith-source">Rapporté par Al-Bukhari & Muslim</div>
     </div>
 
-    <div class="hadith">
-      <p class="arabe">الدِّينُ النَّصِيحَةُ</p>
-      <p><strong>Traduction :</strong> La religion, c’est le bon conseil.</p>
-      <p><em>(Rapporté par Muslim)</em></p>
+    <!-- Hadith 3 -->
+    <div class="hadith-card">
+      <div class="hadith-arabic">الدِّينُ النَّصِيحَةُ، قُلْنَا: لِمَنْ؟ قَالَ: لِلَّهِ، وَلِكِتَابِهِ، وَلِرَسُولِهِ، وَلِأَئِمَّةِ الْمُسْلِمِينَ وَعَامَّتِهِمْ</div>
+      <div class="hadith-translation">La religion, c'est le bon conseil. Nous demandâmes : "À qui ?" Il répondit : "À Allah, à Son Livre, à Son Messager, aux dirigeants des musulmans et à leur communauté."</div>
+      <div class="hadith-source">Rapporté par Muslim</div>
     </div>
 
-    <div class="hadith">
-      <p class="arabe">لا يُؤْمِنُ أَحَدُكُمْ حَتَّى يُحِبَّ لأَخِيهِ مَا يُحِبُّ لِنَفْسِهِ</p>
-      <p><strong>Traduction :</strong> Aucun de vous ne croit vraiment tant qu’il n’aime pas pour son frère ce qu’il aime pour lui-même.</p>
-      <p><em>(Rapporté par Al-Bukhari et Muslim)</em></p>
+    <!-- Hadith 4 -->
+    <div class="hadith-card">
+      <div class="hadith-arabic">لَا يُؤْمِنُ أَحَدُكُمْ حَتَّى يُحِبَّ لِأَخِيهِ مَا يُحِبُّ لِنَفْسِهِ</div>
+      <div class="hadith-translation">Aucun de vous ne croit vraiment tant qu'il n'aime pas pour son frère ce qu'il aime pour lui-même.</div>
+      <div class="hadith-source">Rapporté par Al-Bukhari & Muslim</div>
     </div>
-  </main>
 
-  <!-- Footer -->
-  <footer>
-    <h3>🌿 Rejoignez-nous sur nos réseaux pour plus de contenu islamique !</h3>
-    <div>
-      <a href="https://wa.me/221771234567" target="_blank">
-        <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" alt="WhatsApp">
-      </a>
-      <a href="https://www.tiktok.com/@ton_nom_utilisateur" target="_blank">
-        <img src="https://cdn-icons-png.flaticon.com/512/3046/3046120.png" alt="TikTok">
-      </a>
+    <!-- Hadith 5 -->
+    <div class="hadith-card">
+      <div class="hadith-arabic">اتَّقِ اللَّهَ حَيْثُمَا كُنْتَ، وَأَتْبِعِ السَّيِّئَةَ الْحَسَنَةَ تَمْحُهَا، وَخَالِقِ النَّاسَ بِخُلُقٍ حَسَنٍ</div>
+      <div class="hadith-translation">Crains Allah où que tu sois, fais suivre la mauvaise action par une bonne qui l'effacera, et comporte-toi avec les gens de la meilleure manière.</div>
+      <div class="hadith-source">Rapporté par At-Tirmidhi</div>
     </div>
-    <p>&copy; 2025 École Islamique. Tous droits réservés.</p>
-  </footer>
 
-  <script>
-    // Animation au survol des icônes
-    document.querySelectorAll('footer img').forEach(icon => {
-      icon.addEventListener('mouseover', () => icon.style.transform = 'scale(1.2)');
-      icon.addEventListener('mouseout', () => icon.style.transform = 'scale(1)');
-    });
-  </script>
+    <!-- Hadith 6 -->
+    <div class="hadith-card">
+      <div class="hadith-arabic">الرَّاحِمُونَ يَرْحَمُهُمُ الرَّحْمَنُ، ارْحَمُوا مَنْ فِي الْأَرْضِ يَرْحَمْكُمْ مَنْ فِي السَّمَاءِ</div>
+      <div class="hadith-translation">Les miséricordieux obtiendront la miséricorde du Tout Miséricordieux. Soyez miséricordieux envers ceux qui sont sur terre, Celui qui est au ciel vous fera miséricorde.</div>
+      <div class="hadith-source">Rapporté par At-Tirmidhi</div>
+    </div>
+  </div>
+</main>
+
+<!-- ===== FOOTER (identique à dua.html) ===== -->
+<footer>
+  <h3>🌿 Rejoignez-nous sur nos réseaux pour plus de contenu islamique !</h3>
+  <div>
+    <a href="https://wa.me/221771234567" target="_blank">
+      <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" alt="WhatsApp">
+    </a>
+    <a href="https://www.tiktok.com/@ton_nom_utilisateur" target="_blank">
+      <img src="https://cdn-icons-png.flaticon.com/512/3046/3046120.png" alt="TikTok">
+    </a>
+  </div>
+  <p>&copy; 2025 École Islamique. Tous droits réservés.</p>
+</footer>
 
 </body>
 </html>

@@ -11,8 +11,10 @@
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       color: #333;
       margin: 0;
+      line-height: 1.6;
     }
 
+    /* Header identique à hadith.html */
     header {
       background: linear-gradient(90deg, #028174, #04af9e);
       color: white;
@@ -53,6 +55,7 @@
       color: #028174;
     }
 
+    /* Contenu principal */
     main {
       padding: 50px 20px;
       max-width: 900px;
@@ -66,48 +69,133 @@
       text-align: center;
     }
 
-    .dua-container {
+    /* Section de bienvenue */
+    .welcome-section {
       background: white;
       padding: 30px;
       border-radius: 15px;
       box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      margin-bottom: 40px;
+      text-align: center;
+      border-left: 4px solid #04af9e;
     }
 
-    .dua-item {
-      margin-bottom: 30px;
-      padding-bottom: 30px;
-      border-bottom: 1px solid #eee;
+    .welcome-section h2 {
+      color: #028174;
+      margin-bottom: 15px;
+      font-size: 1.8rem;
     }
 
-    .dua-item:last-child {
-      border-bottom: none;
+    .welcome-section p {
+      color: #555;
+      max-width: 700px;
+      margin: 0 auto;
+      line-height: 1.7;
+    }
+
+    /* Grid des Dua (identique à hadith-grid) */
+    .dua-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+      margin-bottom: 4rem;
+    }
+
+    /* Carte de Dua (identique à hadith-card) */
+    .dua-card {
+      background: white;
+      border-radius: 12px;
+      padding: 25px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+      transition: transform 0.3s, box-shadow 0.3s;
+      border-top: 4px solid #028174;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .dua-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+    }
+
+    .dua-card::before {
+      content: "🙏";
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      font-size: 2rem;
+      color: rgba(2, 129, 116, 0.08);
     }
 
     .dua-arabic {
       font-size: 1.5rem;
       text-align: right;
-      margin-bottom: 15px;
+      margin: 20px 0;
       color: #028174;
-      line-height: 1.6;
+      line-height: 1.8;
+      font-family: 'Traditional Arabic', 'Scheherazade', 'Lateef', serif;
+      font-weight: 600;
+      direction: rtl;
     }
 
     .dua-transcription {
       font-style: italic;
-      margin-bottom: 10px;
-      color: #555;
+      margin: 25px 0;
+      color: #333;
+      line-height: 1.7;
+      padding-bottom: 20px;
+      border-bottom: 1px dashed #eee;
     }
 
     .dua-meaning {
-      color: #333;
-      line-height: 1.6;
+      color: #666;
+      font-size: 1rem;
+      line-height: 1.7;
+      margin-top: 20px;
     }
 
+    /* Catégories */
+    .category-section {
+      margin-bottom: 50px;
+    }
+
+    .category-title {
+      color: #028174;
+      margin-bottom: 25px;
+      padding-bottom: 10px;
+      border-bottom: 2px solid #eee;
+      font-size: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .category-title::before {
+      content: "";
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      background: #04af9e;
+      border-radius: 50%;
+    }
+
+    /* Footer identique à hadith.html */
     footer {
       background: #028174;
       color: white;
       text-align: center;
       padding: 30px 15px;
       margin-top: 60px;
+    }
+
+    footer h3 {
+      margin-bottom: 20px;
+      font-size: 1.2rem;
+      font-weight: 500;
+    }
+
+    footer div a {
+      margin: 0 12px;
     }
 
     footer img {
@@ -119,6 +207,17 @@
       transition: transform 0.3s;
     }
 
+    footer img:hover {
+      transform: scale(1.2);
+    }
+
+    footer p {
+      margin: 15px 0 0 0;
+      font-size: 0.9rem;
+      opacity: 0.9;
+    }
+
+    /* Responsive */
     @media screen and (max-width: 768px) {
       header {
         flex-direction: column;
@@ -135,8 +234,38 @@
         padding: 30px 15px;
       }
 
-      .dua-container {
+      .dua-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+
+      .dua-card {
         padding: 20px;
+      }
+
+      .dua-arabic {
+        font-size: 1.3rem;
+      }
+
+      .welcome-section {
+        padding: 20px;
+      }
+    }
+
+    @media screen and (max-width: 480px) {
+      nav ul {
+        flex-direction: column;
+        gap: 8px;
+      }
+
+      nav a {
+        padding: 8px 12px;
+        display: block;
+        text-align: center;
+      }
+
+      .dua-arabic {
+        font-size: 1.2rem;
       }
     }
   </style>
@@ -144,7 +273,7 @@
 
 <body>
 
-<!-- ===== HEADER ===== -->
+<!-- ===== HEADER (identique à hadith.html) ===== -->
 <header>
   <div class="brand">
     <h1>École Islamique</h1>
@@ -163,36 +292,134 @@
 
 <!-- ===== CONTENU PRINCIPAL ===== -->
 <main>
-  <h2>📖 Invocations (Dua) en Islam</h2>
+  <!-- Section de bienvenue -->
+  <div class="welcome-section">
+    <h2>Les Invocations (Dua) en Islam</h2>
+    <p>Découvrez les invocations tirées du Coran et de la Sunna, avec leur prononciation et leur signification. Ces Dua couvrent différents moments de la journée et situations de la vie.</p>
+  </div>
 
-  <div class="dua-container">
-    <div class="dua-item">
-      <div class="dua-arabic">رَبَّنَا آتِنَا فِي الدُّنْيَا حَسَنَةً وَفِي الْآخِرَةِ حَسَنَةً وَقِنَا عَذَابَ النَّارِ</div>
-      <div class="dua-transcription">Rabbana atina fid-dunya hasanatan wa fil-akhirati hasanatan wa qina 'adhaban-nar</div>
-      <div class="dua-meaning">"Seigneur, donne-nous une belle part ici-bas, et une belle part dans l'au-delà, et protège-nous du châtiment du Feu." (Coran 2:201)</div>
+  <!-- Section Dua du Matin -->
+  <div class="category-section">
+    <h3 class="category-title">Dua du Matin</h3>
+    <div class="dua-grid">
+      <div class="dua-card">
+        <div class="dua-arabic">أَصْبَحْنَا وَأَصْبَحَ الْمُلْكُ لِلَّهِ، وَالْحَمْدُ لِلَّهِ، لَا إِلَهَ إِلَّا اللَّهُ وَحْدَهُ لَا شَرِيكَ لَهُ</div>
+        <div class="dua-transcription">Asbahna wa asbahal-mulku lillah, walhamdulillah, la ilaha illallah wahdahu la sharika lah</div>
+        <div class="dua-meaning">"Nous avons atteint le matin et c'est à Allah qu'appartient la royauté. Louange à Allah, il n'y a de divinité digne d'être adorée qu'Allah, Unique sans associé."</div>
+      </div>
+
+      <div class="dua-card">
+        <div class="dua-arabic">اللَّهُمَّ بِكَ أَصْبَحْنَا، وَبِكَ أَمْسَيْنَا، وَبِكَ نَحْيَا، وَبِكَ نَمُوتُ، وَإِلَيْكَ النُّشُورُ</div>
+        <div class="dua-transcription">Allahumma bika asbahna, wa bika amsayna, wa bika nahya, wa bika namutu, wa ilaykan-nushur</div>
+        <div class="dua-meaning">"Ô Allah, par Ta grâce nous avons atteint le matin, par Ta grâce nous avons atteint le soir, par Ta grâce nous vivons, par Ta grâce nous mourrons, et c'est vers Toi que sera la résurrection."</div>
+      </div>
+
+      <div class="dua-card">
+        <div class="dua-arabic">رَضِيتُ بِاللَّهِ رَبًّا، وَبِالْإِسْلَامِ دِينًا، وَبِمُحَمَّدٍ صَلَّى اللَّهُ عَلَيْهِ وَسَلَّمَ نَبِيًّا</div>
+        <div class="dua-transcription">Raditu billahi rabban, wa bil-Islami dinan, wa bi-Muhammadin sallallahu 'alayhi wa sallama nabiyyan</div>
+        <div class="dua-meaning">"Je suis satisfait d'Allah comme Seigneur, de l'Islam comme religion, et de Mohammed (paix et bénédictions sur lui) comme Prophète."</div>
+      </div>
     </div>
+  </div>
 
-    <div class="dua-item">
-      <div class="dua-arabic">اللَّهُمَّ اغْفِرْ لِي، وَارْحَمْنِي، وَاهْدِنِي، وَعَافِنِي، وَارْزُقْنِي</div>
-      <div class="dua-transcription">Allahummaghfir li, warhamni, wahdini, wa 'afini, warzuqni</div>
-      <div class="dua-meaning">"Ô Allah, pardonne-moi, fais-moi miséricorde, guide-moi, préserve-moi et accorde-moi ma subsistance."</div>
+  <!-- Section Dua du Soir -->
+  <div class="category-section">
+    <h3 class="category-title">Dua du Soir</h3>
+    <div class="dua-grid">
+      <div class="dua-card">
+        <div class="dua-arabic">أَمْسَيْنَا وَأَمْسَى الْمُلْكُ لِلَّهِ، وَالْحَمْدُ لِلَّهِ، لَا إِلَهَ إِلَّا اللَّهُ وَحْدَهُ لَا شَرِيكَ لَهُ</div>
+        <div class="dua-transcription">Amsayna wa amsal-mulku lillah, walhamdulillah, la ilaha illallah wahdahu la sharika lah</div>
+        <div class="dua-meaning">"Nous avons atteint le soir et c'est à Allah qu'appartient la royauté. Louange à Allah, il n'y a de divinité digne d'être adorée qu'Allah, Unique sans associé."</div>
+      </div>
+
+      <div class="dua-card">
+        <div class="dua-arabic">اللَّهُمَّ بِكَ أَمْسَيْنَا، وَبِكَ أَصْبَحْنَا، وَبِكَ نَحْيَا، وَبِكَ نَمُوتُ، وَإِلَيْكَ الْمَصِيرُ</div>
+        <div class="dua-transcription">Allahumma bika amsayna, wa bika asbahna, wa bika nahya, wa bika namutu, wa ilaykal-masir</div>
+        <div class="dua-meaning">"Ô Allah, par Ta grâce nous avons atteint le soir, par Ta grâce nous atteindrons le matin, par Ta grâce nous vivons, par Ta grâce nous mourrons, et c'est vers Toi le devenir."</div>
+      </div>
+
+      <div class="dua-card">
+        <div class="dua-arabic">اللَّهُمَّ إِنِّي أَسْأَلُكَ عَفْوَ وَعَافِيَةَ فِي الدُّنْيَا وَالْآخِرَةِ</div>
+        <div class="dua-transcription">Allahumma inni as'aluka 'afwa wa 'afiyah fid-dunya wal-akhirah</div>
+        <div class="dua-meaning">"Ô Allah, je Te demande le pardon et la préservation dans ce bas monde et dans l'au-delà."</div>
+      </div>
     </div>
+  </div>
 
-    <div class="dua-item">
-      <div class="dua-arabic">سُبْحَانَ اللَّهِ وَبِحَمْدِهِ، سُبْحَانَ اللَّهِ الْعَظِيمِ</div>
-      <div class="dua-transcription">Subhanallahi wa bihamdihi, Subhanallahil-'Adhim</div>
-      <div class="dua-meaning">"Gloire à Allah et Louange à Lui, Gloire à Allah le Très Grand."</div>
+  <!-- Section Avant de dormir -->
+  <div class="category-section">
+    <h3 class="category-title">Avant de dormir</h3>
+    <div class="dua-grid">
+      <div class="dua-card">
+        <div class="dua-arabic">بِاسْمِكَ اللَّهُمَّ أَمُوتُ وَأَحْيَا</div>
+        <div class="dua-transcription">Bismikallahumma amutu wa ahya</div>
+        <div class="dua-meaning">"En Ton nom, Ô Allah, je meurs et je vis."</div>
+      </div>
+
+      <div class="dua-card">
+        <div class="dua-arabic">اللَّهُمَّ قِنِي عَذَابَكَ يَوْمَ تَبْعَثُ عِبَادَكَ</div>
+        <div class="dua-transcription">Allahumma qini 'adhabaka yawma tab'athu 'ibadak</div>
+        <div class="dua-meaning">"Ô Allah, protège-moi de Ton châtiment le jour où Tu ressusciteras Tes serviteurs."</div>
+      </div>
+
+      <div class="dua-card">
+        <div class="dua-arabic">الْحَمْدُ لِلَّهِ الَّذِي أَطْعَمَنَا وَسَقَانَا وَكَفَانَا وَآوَانَا</div>
+        <div class="dua-transcription">Alhamdulillahil-ladhi at'amana wa saqana wa kafana wa awana</div>
+        <div class="dua-meaning">"Louange à Allah qui nous a nourris, abreuvés, comblés et donné refuge."</div>
+      </div>
     </div>
+  </div>
 
-    <div class="dua-item">
-      <div class="dua-arabic">لَا إِلَهَ إِلَّا أَنْتَ سُبْحَانَكَ إِنِّي كُنْتُ مِنَ الظَّالِمِينَ</div>
-      <div class="dua-transcription">La ilaha illa anta subhanaka inni kuntu minaz-zalimin</div>
-      <div class="dua-meaning">"Il n'y a de divinité que Toi, Gloire à Toi, j'ai été du nombre des injustes." (Coran 21:87)</div>
+  <!-- Section Après la prière -->
+  <div class="category-section">
+    <h3 class="category-title">Après la prière</h3>
+    <div class="dua-grid">
+      <div class="dua-card">
+        <div class="dua-arabic">أَسْتَغْفِرُ اللَّهَ (3 مرات)</div>
+        <div class="dua-transcription">Astaghfirullah (3 fois)</div>
+        <div class="dua-meaning">"Je demande pardon à Allah (3 fois)."</div>
+      </div>
+
+      <div class="dua-card">
+        <div class="dua-arabic">لَا إِلَهَ إِلَّا اللَّهُ وَحْدَهُ لَا شَرِيكَ لَهُ، لَهُ الْمُلْكُ وَلَهُ الْحَمْدُ، وَهُوَ عَلَى كُلِّ شَيْءٍ قَدِيرٌ</div>
+        <div class="dua-transcription">La ilaha illallah wahdahu la sharika lah, lahul-mulku wa lahul-hamd, wa huwa 'ala kulli shay'in qadir</div>
+        <div class="dua-meaning">"Il n'y a de divinité digne d'être adorée qu'Allah, Unique sans associé. À Lui la royauté et la louange, et Il est capable de toute chose."</div>
+      </div>
+
+      <div class="dua-card">
+        <div class="dua-arabic">سُبْحَانَ اللَّهِ (33 مرة) الْحَمْدُ لِلَّهِ (33 مرة) اللَّهُ أَكْبَرُ (33 مرة)</div>
+        <div class="dua-transcription">Subhanallah (33 fois) - Alhamdulillah (33 fois) - Allahu Akbar (33 fois)</div>
+        <div class="dua-meaning">"Gloire à Allah (33 fois) - Louange à Allah (33 fois) - Allah est le Plus Grand (33 fois)."</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Section Dua générales -->
+  <div class="category-section">
+    <h3 class="category-title">Dua générales</h3>
+    <div class="dua-grid">
+      <div class="dua-card">
+        <div class="dua-arabic">رَبَّنَا آتِنَا فِي الدُّنْيَا حَسَنَةً وَفِي الْآخِرَةِ حَسَنَةً وَقِنَا عَذَابَ النَّارِ</div>
+        <div class="dua-transcription">Rabbana atina fid-dunya hasanatan wa fil-akhirati hasanatan wa qina 'adhaban-nar</div>
+        <div class="dua-meaning">"Seigneur, donne-nous une belle part ici-bas, et une belle part dans l'au-delà, et protège-nous du châtiment du Feu." (Coran 2:201)</div>
+      </div>
+
+      <div class="dua-card">
+        <div class="dua-arabic">لَا إِلَهَ إِلَّا أَنْتَ سُبْحَانَكَ إِنِّي كُنْتُ مِنَ الظَّالِمِينَ</div>
+        <div class="dua-transcription">La ilaha illa anta subhanaka inni kuntu minaz-zalimin</div>
+        <div class="dua-meaning">"Il n'y a de divinité que Toi, Gloire à Toi, j'ai été du nombre des injustes." (Coran 21:87)</div>
+      </div>
+
+      <div class="dua-card">
+        <div class="dua-arabic">اللَّهُمَّ إِنِّي أَسْأَلُكَ الْهُدَى وَالتُّقَى وَالْعَفَافَ وَالْغِنَى</div>
+        <div class="dua-transcription">Allahumma inni as'alukal-huda wat-tuqa wal-'afafa wal-ghina</div>
+        <div class="dua-meaning">"Ô Allah, je Te demande la guidance, la piété, la chasteté et la richesse (de l'âme)."</div>
+      </div>
     </div>
   </div>
 </main>
 
-<!-- ===== FOOTER ===== -->
+<!-- ===== FOOTER (identique à hadith.html) ===== -->
 <footer>
   <h3>🌿 Rejoignez-nous sur nos réseaux pour plus de contenu islamique !</h3>
   <div>
@@ -205,13 +432,6 @@
   </div>
   <p>&copy; 2025 École Islamique. Tous droits réservés.</p>
 </footer>
-
-<script>
-  document.querySelectorAll('footer img').forEach(icon => {
-    icon.addEventListener('mouseover', () => icon.style.transform = 'scale(1.2)');
-    icon.addEventListener('mouseout', () => icon.style.transform = 'scale(1)');
-  });
-</script>
 
 </body>
 </html>

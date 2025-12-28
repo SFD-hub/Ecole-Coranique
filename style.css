@@ -303,6 +303,87 @@ footer p {
 }
 
 /* ==========================
+   Responsive
+========================== */
+@media (max-width: 1024px) {
+  nav ul {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 768px) {
+  header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  nav ul {
+    flex-direction: column;
+    width: 100%;
+    margin-top: 10px;
+    gap: 10px;
+  }
+
+  nav ul li a {
+    display: block;
+    width: 100%;
+    text-align: center;
+    padding: 8px;
+  }
+
+  .audio-item {
+    height: 280px;
+  }
+
+  .hero {
+    padding: 40px 15px;
+  }
+  .hero h2 {
+    font-size: 2rem;
+  }
+  .hero .hadith {
+    font-size: 1rem;
+  }
+  .hero .btn {
+    padding: 10px 20px;
+  }
+
+  footer img {
+    width: 30px;
+    padding: 4px;
+  }
+
+  footer h3 {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  section h2 {
+    font-size: 1.6rem;
+  }
+
+  .hero h2 {
+    font-size: 1.6rem;
+  }
+  .hero .hadith {
+    font-size: 0.9rem;
+  }
+  .hero .btn {
+    padding: 8px 15px;
+    font-size: 0.9rem;
+  }
+
+  .audio-content h3 {
+    font-size: 1rem;
+  }
+
+  .audio-content p {
+    font-size: 0.85rem;
+  }
+}
+
+/* ==========================
    Menu Burger (Toggle Button)
 ========================== */
 
@@ -346,20 +427,20 @@ footer p {
 }
 
 /* ==========================
-   Responsive avec Menu Burger CORRIGÉ
+   Responsive avec Menu Burger - CORRIGÉ
 ========================== */
 @media (max-width: 768px) {
     /* Header devient flex row avec espace-between */
     header {
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: center;
+        flex-direction: row; /* Changé de column à row */
+        justify-content: space-between; /* Force l'espacement */
+        align-items: center; /* Centre verticalement */
         padding: 10px 20px;
         position: relative;
         min-height: 60px;
     }
 
-    /* Afficher le bouton burger */
+    /* Afficher le bouton burger et le positionner à droite */
     .burger-btn {
         display: flex;
         order: 2; /* Burger à droite */
@@ -385,7 +466,7 @@ footer p {
         padding: 0;
     }
 
-    /* Quand le menu est ouvert (checkbox cochée) - HAUTEUR CORRIGÉE */
+    /* Quand le menu est ouvert (checkbox cochée) */
     #menu-toggle:checked ~ nav {
         max-height: calc(100vh - 60px); /* Prend toute la hauteur disponible */
         padding: 0;
@@ -423,11 +504,9 @@ footer p {
         color: #028174 !important;
     }
 
-    /* Corriger l'ancien style */
-    nav ul li a {
-        width: 100%;
-        text-align: center;
-        padding: 18px;
+    /* Masquer la navigation desktop originale sur mobile */
+    nav:not(.mobile-nav) ul {
+        display: none;
     }
 
     /* Ajustements pour le contenu */
@@ -480,29 +559,6 @@ footer p {
     nav a {
         padding: 16px 20px;
         font-size: 1rem;
-    }
-
-    section h2 {
-        font-size: 1.6rem;
-    }
-
-    .hero h2 {
-        font-size: 1.6rem;
-    }
-    .hero .hadith {
-        font-size: 0.9rem;
-    }
-    .hero .btn {
-        padding: 8px 15px;
-        font-size: 0.9rem;
-    }
-
-    .audio-content h3 {
-        font-size: 1rem;
-    }
-
-    .audio-content p {
-        font-size: 0.85rem;
     }
 
     .burger-btn {

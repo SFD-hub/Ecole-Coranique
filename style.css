@@ -427,20 +427,20 @@ footer p {
 }
 
 /* ==========================
-   Responsive avec Menu Burger - CORRIGÉ
+   Responsive avec Menu Burger CORRIGÉ
 ========================== */
 @media (max-width: 768px) {
     /* Header devient flex row avec espace-between */
     header {
-        flex-direction: row; /* Changé de column à row */
-        justify-content: space-between; /* Force l'espacement */
-        align-items: center; /* Centre verticalement */
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
         padding: 10px 20px;
         position: relative;
         min-height: 60px;
     }
 
-    /* Afficher le bouton burger et le positionner à droite */
+    /* Afficher le bouton burger */
     .burger-btn {
         display: flex;
         order: 2; /* Burger à droite */
@@ -451,10 +451,10 @@ footer p {
         order: 1;
     }
 
-    /* Navigation - position fixe pour prendre toute la hauteur */
+    /* Navigation - position absolute au lieu de fixed */
     nav {
-        position: fixed;
-        top: 60px;
+        position: absolute; /* Changé de fixed à absolute */
+        top: 100%; /* Positionné juste en dessous du header */
         left: 0;
         width: 100%;
         background: linear-gradient(90deg, #028174, #04af9e);
@@ -468,7 +468,7 @@ footer p {
 
     /* Quand le menu est ouvert (checkbox cochée) */
     #menu-toggle:checked ~ nav {
-        max-height: calc(100vh - 60px); /* Prend toute la hauteur disponible */
+        max-height: 400px; /* Hauteur fixe raisonnable */
         padding: 0;
         overflow-y: auto; /* Permet de scroller si nécessaire */
     }
@@ -504,9 +504,11 @@ footer p {
         color: #028174 !important;
     }
 
-    /* Masquer la navigation desktop originale sur mobile */
-    nav:not(.mobile-nav) ul {
-        display: none;
+    /* Corriger l'ancien style */
+    nav ul li a {
+        width: 100%;
+        text-align: center;
+        padding: 18px;
     }
 
     /* Ajustements pour le contenu */
@@ -549,7 +551,7 @@ footer p {
     }
     
     #menu-toggle:checked ~ nav {
-        max-height: calc(100vh - 55px);
+        max-height: 350px; /* Hauteur réduite pour petits écrans */
     }
     
     .site-name {
@@ -559,6 +561,29 @@ footer p {
     nav a {
         padding: 16px 20px;
         font-size: 1rem;
+    }
+
+    section h2 {
+        font-size: 1.6rem;
+    }
+
+    .hero h2 {
+        font-size: 1.6rem;
+    }
+    .hero .hadith {
+        font-size: 0.9rem;
+    }
+    .hero .btn {
+        padding: 8px 15px;
+        font-size: 0.9rem;
+    }
+
+    .audio-content h3 {
+        font-size: 1rem;
+    }
+
+    .audio-content p {
+        font-size: 0.85rem;
     }
 
     .burger-btn {

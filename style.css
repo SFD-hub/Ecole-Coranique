@@ -46,50 +46,7 @@ header {
 }
 
 /* ==========================
-   Menu Burger (Toggle Button)
-========================== */
-
-/* Bouton burger - caché par défaut sur desktop */
-.burger-btn {
-    display: none;
-    flex-direction: column;
-    justify-content: space-between;
-    width: 30px;
-    height: 21px;
-    cursor: pointer;
-    z-index: 1001;
-    position: relative;
-}
-
-.burger-btn span {
-    display: block;
-    height: 3px;
-    width: 100%;
-    background-color: white;
-    border-radius: 3px;
-    transition: all 0.3s ease;
-}
-
-/* Checkbox cachée */
-#menu-toggle {
-    display: none;
-}
-
-/* Transformation burger → croix */
-#menu-toggle:checked ~ .burger-btn span:nth-child(1) {
-    transform: rotate(45deg) translate(5px, 5px);
-}
-
-#menu-toggle:checked ~ .burger-btn span:nth-child(2) {
-    opacity: 0;
-}
-
-#menu-toggle:checked ~ .burger-btn span:nth-child(3) {
-    transform: rotate(-45deg) translate(7px, -6px);
-}
-
-/* ==========================
-   Navigation
+   Navigation Desktop
 ========================== */
 nav ul {
   list-style: none;
@@ -111,6 +68,40 @@ nav a:hover,
 nav a.active {
   background: white;
   color: #028174;
+}
+
+/* ==========================
+   Menu Burger (Toggle Button)
+========================== */
+
+/* Bouton burger - caché par défaut sur desktop */
+.burger-btn {
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 30px;
+  height: 21px;
+  cursor: pointer;
+  z-index: 1001;
+  position: relative;
+  background: transparent;
+  border: none;
+  padding: 0;
+}
+
+.burger-btn span {
+  display: block;
+  height: 3px;
+  width: 100%;
+  background-color: white;
+  border-radius: 3px;
+  transition: all 0.3s ease;
+  transform-origin: center;
+}
+
+/* Checkbox cachée */
+#menu-toggle {
+  display: none;
 }
 
 /* ==========================
@@ -356,9 +347,8 @@ footer p {
   }
 }
 
-/* REMPLACER TOUTE LA SECTION CI-DESSOUS PAR CE NOUVEAU CODE */
 /* ==========================
-   Responsive Mobile avec Menu Burger
+   Responsive Mobile avec Menu Burger CORRIGÉ
 ========================== */
 @media (max-width: 768px) {
   /* Header devient flex row avec espace-between */
@@ -374,7 +364,7 @@ footer p {
   /* Afficher le bouton burger et cacher le menu normal */
   .burger-btn {
     display: flex;
-    order: 2; /* Burger à droite */
+    order: 2;
   }
 
   /* Logo à gauche */
@@ -382,30 +372,33 @@ footer p {
     order: 1;
   }
 
-  /* Navigation - cachée par défaut sur mobile */
+  /* Cacher la navigation normale */
   nav {
+    display: none;
+  }
+
+  /* Navigation mobile - position fixe */
+  .mobile-nav {
     position: fixed;
     top: 60px;
     left: 0;
     width: 100%;
+    height: 0;
     background: linear-gradient(90deg, #028174, #04af9e);
     box-shadow: 0 4px 10px rgba(0,0,0,0.1);
     z-index: 1000;
-    max-height: 0;
     overflow: hidden;
-    transition: max-height 0.5s ease-out;
-    padding: 0;
+    transition: height 0.4s ease-out;
   }
 
   /* Quand le menu est ouvert (checkbox cochée) */
-  #menu-toggle:checked ~ nav {
-    max-height: calc(100vh - 60px); /* Prend toute la hauteur restante */
-    padding: 0;
-    overflow-y: auto; /* Permet de scroller si nécessaire */
+  #menu-toggle:checked ~ .mobile-nav {
+    height: calc(100vh - 60px);
+    overflow-y: auto;
   }
 
   /* Menu en colonne */
-  nav ul {
+  .mobile-nav ul {
     flex-direction: column;
     width: 100%;
     gap: 0;
@@ -413,31 +406,39 @@ footer p {
     padding: 0;
   }
 
-  nav ul li {
+  .mobile-nav ul li {
     width: 100%;
     text-align: center;
   }
 
-  nav a {
+  .mobile-nav a {
     display: block;
     padding: 18px 20px;
     border-radius: 0;
     border-bottom: 1px solid rgba(255, 255, 255, 0.15);
     font-size: 1.1rem;
     text-align: center;
+    color: white !important;
   }
 
-  nav a:hover,
-  nav a.active {
-    background: rgba(255, 255, 255, 0.2);
-    color: white;
+  /* SURVOL ET ACTIF EN BLANC SUR MOBILE */
+  .mobile-nav a:hover,
+  .mobile-nav a.active {
+    background: white !important;
+    color: #028174 !important;
   }
 
-  /* Supprimer l'ancien style qui forçait le menu vertical */
-  nav ul li a {
-    width: 100%;
-    text-align: center;
-    padding: 18px;
+  /* Correction de la croix burger */
+  #menu-toggle:checked + .burger-btn span:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+  }
+
+  #menu-toggle:checked + .burger-btn span:nth-child(2) {
+    opacity: 0;
+  }
+
+  #menu-toggle:checked + .burger-btn span:nth-child(3) {
+    transform: rotate(-45deg) translate(7px, -6px);
   }
 
   /* Ajustements pour le contenu */
@@ -466,12 +467,6 @@ footer p {
   footer h3 {
     font-size: 1rem;
   }
-
-  /* Assurer que le body ne scroll pas quand le menu est ouvert */
-  #menu-toggle:checked ~ * {
-    position: fixed;
-    width: 100%;
-  }
 }
 
 @media (max-width: 480px) {
@@ -486,15 +481,15 @@ footer p {
     font-size: 1.2rem;
   }
 
-  nav {
+  .mobile-nav {
     top: 55px;
   }
 
-  #menu-toggle:checked ~ nav {
-    max-height: calc(100vh - 55px);
+  #menu-toggle:checked ~ .mobile-nav {
+    height: calc(100vh - 55px);
   }
 
-  nav a {
+  .mobile-nav a {
     padding: 16px 20px;
     font-size: 1rem;
   }

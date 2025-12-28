@@ -382,3 +382,135 @@ footer p {
     font-size: 0.85rem;
   }
 }
+
+/* ==========================
+   Menu Burger (Toggle Button)
+========================== */
+
+/* Bouton burger - caché par défaut sur desktop */
+.burger-btn {
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30px;
+    height: 21px;
+    cursor: pointer;
+    z-index: 1001;
+    position: relative;
+}
+
+.burger-btn span {
+    display: block;
+    height: 3px;
+    width: 100%;
+    background-color: white;
+    border-radius: 3px;
+    transition: all 0.3s ease;
+}
+
+/* Checkbox cachée */
+#menu-toggle {
+    display: none;
+}
+
+/* Transformation burger → croix */
+#menu-toggle:checked ~ .burger-btn span:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+}
+
+#menu-toggle:checked ~ .burger-btn span:nth-child(2) {
+    opacity: 0;
+}
+
+#menu-toggle:checked ~ .burger-btn span:nth-child(3) {
+    transform: rotate(-45deg) translate(7px, -6px);
+}
+
+/* ==========================
+   Responsive avec Menu Burger
+========================== */
+@media (max-width: 768px) {
+    /* Header devient flex row avec espace-between */
+    header {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px 20px;
+    }
+
+    /* Afficher le bouton burger */
+    .burger-btn {
+        display: flex;
+    }
+
+    /* Navigation - cachée par défaut sur mobile */
+    nav {
+        position: absolute;
+        top: 60px;
+        left: 0;
+        width: 100%;
+        background: linear-gradient(90deg, #028174, #04af9e);
+        box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        z-index: 1000;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease-out;
+    }
+
+    /* Quand le menu est ouvert (checkbox cochée) */
+    #menu-toggle:checked ~ nav {
+        max-height: 300px;
+        padding: 15px 0;
+    }
+
+    /* Menu en colonne */
+    nav ul {
+        flex-direction: column;
+        width: 100%;
+        gap: 0;
+    }
+
+    nav ul li {
+        width: 100%;
+        text-align: center;
+    }
+
+    nav a {
+        display: block;
+        padding: 12px 20px;
+        border-radius: 0;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    nav a:hover,
+    nav a.active {
+        background: rgba(255, 255, 255, 0.15);
+        color: white;
+    }
+
+    /* Ajustement pour les petits écrans */
+    .brand {
+        order: -1; /* Logo à gauche */
+    }
+
+    .burger-btn {
+        order: 1; /* Burger à droite */
+    }
+
+    /* Corriger l'ancien style qui forçait le menu vertical */
+    nav ul li a {
+        width: 100%;
+        text-align: center;
+        padding: 12px;
+    }
+}
+
+@media (max-width: 480px) {
+    nav {
+        top: 50px;
+    }
+    
+    .site-name {
+        font-size: 1.2rem;
+    }
+}

@@ -6,6 +6,7 @@
   <title>Hadiths - École Islamique</title>
   <link rel="stylesheet" href="style.css">
   <style>
+    /* ===== BASE ===== */
     body {
       background: #f5f7fa;
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -14,30 +15,53 @@
       line-height: 1.6;
     }
 
-    /* Header identique à dua.html */
+    /* ===== HEADER CORRIGÉ ===== */
     header {
       background: linear-gradient(90deg, #028174, #04af9e);
       color: white;
-      padding: 15px 30px;
+      padding: 15px 20px;
       display: flex;
-      justify-content: space-between;
       align-items: center;
-      flex-wrap: wrap;
+      justify-content: space-between;
+      position: relative;
       box-shadow: 0 4px 10px rgba(0,0,0,0.1);
     }
 
     .brand h1 {
       font-size: 1.6rem;
+      margin: 0;
       font-weight: bold;
     }
 
+    /* ===== BURGER CORRIGÉ ===== */
+    #menu-toggle {
+      display: none;
+    }
+
+    .burger-btn {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      z-index: 1001;
+    }
+
+    .burger-btn span {
+      width: 26px;
+      height: 3px;
+      background: white;
+      display: block;
+      border-radius: 2px;
+      transition: 0.3s;
+    }
+
+    /* ===== NAV ===== */
     nav ul {
       list-style: none;
       display: flex;
       gap: 15px;
       margin: 0;
       padding: 0;
-      flex-wrap: wrap;
     }
 
     nav a {
@@ -55,7 +79,7 @@
       color: #028174;
     }
 
-    /* Contenu principal */
+    /* ===== CONTENU PRINCIPAL ===== */
     main {
       padding: 50px 20px;
       max-width: 900px;
@@ -155,7 +179,7 @@
       line-height: 1.7;
     }
 
-    /* Footer identique à dua.html */
+    /* ===== FOOTER ===== */
     footer {
       background: #028174;
       color: white;
@@ -193,19 +217,43 @@
       opacity: 0.9;
     }
 
-    /* Responsive */
-    @media screen and (max-width: 768px) {
-      header {
-        flex-direction: column;
-        align-items: flex-start;
+    /* ===== RESPONSIVE CORRIGÉ ===== */
+    @media (max-width: 768px) {
+      .burger-btn {
+        display: flex;
+      }
+
+      nav {
+        width: 100%;
+        order: 3;
       }
 
       nav ul {
         flex-direction: column;
-        gap: 10px;
+        display: none;
+        background: linear-gradient(90deg, #028174, #04af9e);
+        margin-top: 15px;
+        padding: 10px 0;
+        max-height: 80vh;
+        overflow-y: auto;
         width: 100%;
       }
 
+      #menu-toggle:checked ~ nav ul {
+        display: flex;
+      }
+
+      nav li {
+        width: 100%;
+      }
+
+      nav a {
+        display: block;
+        padding: 12px 20px;
+        text-align: center;
+      }
+
+      /* Contenu responsive */
       main {
         padding: 30px 15px;
       }
@@ -228,14 +276,15 @@
       }
     }
 
-    @media screen and (max-width: 480px) {
-      nav ul {
-        flex-direction: column;
-        gap: 8px;
+    @media (min-width: 769px) {
+      .burger-btn {
+        display: none;
       }
+    }
 
+    @media screen and (max-width: 480px) {
       nav a {
-        padding: 8px 12px;
+        padding: 12px;
         display: block;
         text-align: center;
       }
@@ -249,36 +298,32 @@
 
 <body>
 
-<!-- ===== HEADER (identique à dua.html) ===== -->
-<!-- Header Universel -->
+<!-- ===== HEADER CORRIGÉ (même ordre que index.html et dua.html) ===== -->
 <header>
-  <!-- Checkbox cachée pour toggle menu -->
-  <input type="checkbox" id="menu-toggle" />
-  
-  <!-- Bouton burger (3 lignes) -->
+  <div class="brand">
+    <h1 class="site-name">École Islamique</h1>
+  </div>
+
+  <input type="checkbox" id="menu-toggle">
+
   <label for="menu-toggle" class="burger-btn">
     <span></span>
     <span></span>
     <span></span>
   </label>
-  
-  <!-- Logo -->
-  <div class="brand">
-    <h1 class="site-name">École Islamique</h1>
-  </div>
-  
-  <!-- Navigation -->
+
   <nav>
     <ul>
-      <li><a href="index.html" >Accueil</a></li>
+      <li><a href="index.html">Accueil</a></li>
       <li><a href="alquran_wolof.html">Al Qur'an en Wolof</a></li>
-      <li><a href="hadith.html"class="active">Hadith</a></li>
+      <li><a href="hadith.html" class="active">Hadith</a></li>
       <li><a href="dua.html">Dua</a></li>
       <li><a href="apropos.html">À propos</a></li>
       <li><a href="contact.html">Contact</a></li>
     </ul>
   </nav>
 </header>
+
 <!-- ===== CONTENU PRINCIPAL ===== -->
 <main>
   <!-- Section de bienvenue -->
@@ -333,7 +378,7 @@
   </div>
 </main>
 
-<!-- ===== FOOTER (identique à dua.html) ===== -->
+<!-- ===== FOOTER ===== -->
 <footer>
   <h3>🌿 Rejoignez-nous sur nos réseaux pour plus de contenu islamique !</h3>
   <div>
@@ -346,7 +391,6 @@
   </div>
   <p>&copy; 2025 École Islamique. Tous droits réservés.</p>
 </footer>
-
 
 </body>
 </html>
